@@ -34,11 +34,12 @@ def data_analysis(penguin_data):
      
     variables = list(penguin_data[0].keys())
     print(f"Variables in penguin dataset: {variables}")
-    
+
     print(f"Sample entry: {penguin_data[0]}")
+
+    print(f"Total rows: {len(penguin_data)}")
     
      
-
 
 def main():
     penguin_data = read_file('penguins.csv')
