@@ -28,9 +28,20 @@ def read_file(file_name):
         print("Failed to open file. Check for valid file name.")
 
 
+def data_analysis(penguin_data):
+     if not penguin_data:
+          return "No data available to analyze."
+     
+     variables = list(penguin_data[0].keys())
+     print(f"Variables in penguin dataset: {variables}")
+
+
 def main():
     penguin_data = read_file('penguins.csv')
-    print(penguin_data)
+#    print(penguin_data)
+
+    data_analysis(penguin_data)
+
 
 if __name__ == "__main__":
     main()
