@@ -29,11 +29,15 @@ def read_file(file_name):
 
 
 def data_analysis(penguin_data):
-     if not penguin_data:
-          return "No data available to analyze."
+    if not penguin_data:
+        return "No data available to analyze."
      
-     variables = list(penguin_data[0].keys())
-     print(f"Variables in penguin dataset: {variables}")
+    variables = list(penguin_data[0].keys())
+    print(f"Variables in penguin dataset: {variables}")
+    
+    print(f"Sample entry: {penguin_data[0]}")
+    
+     
 
 
 def main():
