@@ -27,8 +27,13 @@ def read_file(file_name):
     except:
         print("Failed to open file. Check for valid file name.")
 
-penguin = read_file("penguins.csv")
-print(penguin)
+
+def main():
+    penguin_data = read_file('penguins.csv')
+    print(penguin_data)
+
+if __name__ == "__main__":
+    main()
 
 
 
