@@ -39,17 +39,13 @@ def data_analysis(penguin_data):
 
     print(f"Total rows: {len(penguin_data)}")
     
-     
 
 def main():
     penguin_data = read_file('penguins.csv')
-#    print(penguin_data)
-
     data_analysis(penguin_data)
 
 
 if __name__ == "__main__":
     main()
-
 
 
