@@ -1,3 +1,13 @@
+# Name: Sabina Begum
+# student ID: 94703436
+# email: bsabina@umich.edu
+# External resources: Runestone, GenAI, OH, Google sites, Previous HW
+# - Runestone: viewed examples for write, nested dictionary, open() file, inner dictionary, test cases
+# - GenAI: used to pseudocode, debug/understand errors, initialize new entries in a nested dictionary
+# -OH: received help in function structure formation, submission clarity
+# Google sites: learned about DictReader(), watched tutorials on nested dictionary, writing test cases
+# Prvious HW: used previous HW test cases as example to write them here and import appropriate functions   
+
 import csv 
 
 def read_file(file_name):
