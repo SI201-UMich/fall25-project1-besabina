@@ -48,7 +48,7 @@ def data_analysis(penguin_data):
     print(f"Total rows: {len(penguin_data)}")
 
 def avg_mass_by_species_sex(penguin_data):
-    # Initialize empty dict to organize data
+    # Initialize empty dict to organize data by species, sex, body mass
     final_data = {}
 
     # Process each penguin record in dataset
@@ -62,7 +62,7 @@ def avg_mass_by_species_sex(penguin_data):
         if species not in final_data:
             final_data[species] = {}
         
-        # If sex not in final_data, initialize counter
+        # If sex not in final_data, initialize entry, counter
         if sex not in final_data[species]:
             final_data[species][sex] = {'total': 0, 'count': 0}
         
@@ -88,6 +88,40 @@ def avg_mass_by_species_sex(penguin_data):
             average[species][sex] = stats['total']/stats['count']
         
     return average
+
+def avg_bill_by_island(penguin_data):
+    # Initialize empty dict to organize data by island
+    island_data = {}
+
+    # Process each penguin record in dataset
+    for row in penguin_data:
+        island = row['island']
+        bill_length = row['bill_length_mm']
+        bill_depth = row['bill_depth_mm']
+
+        # Calculate bill ratio
+        bill_ratio = bill_length / bill_depth
+#        print(f"First bill_ratio: {bill_ratio}")
+#        print(f"Print island_data: {island_data}")
+
+        # If island not in dict, initialize entry, counter
+        if island not in island_data:
+            island_data[island] = {'total_ratio': 0, 'count': 0}
+
+        # Add to penguin's ratio total and increment counter
+        island_data[island]['total_ratio'] += bill_ratio
+        island_data[island]['count'] += 1
+    
+#    print(f"print island_data[island]['total_ratio']: {island_data[island]['total_ratio']}")
+
+    average_ratio = {}
+
+    # Calculate average for each island
+    for island, stats in island_data.items():
+        average_ratio[island] = stats['total_ratio'] / stats['count']
+#        print(f"print average_ratio[island]: {average_ratio[island]}")
+    
+    return average_ratio
     
 
 def main():
@@ -100,7 +134,13 @@ def main():
     for species, sex_data in mass_dict.items():
         print(f"{species} Penguins:")
         for sex, avg_mass in sex_data.items():
-            print(f"   {sex}: {avg_mass:.2f} grams")
+            print(f"   {sex}: {avg_mass:.3f} grams")
+
+    print("\n*** CALCULATION 2: Average bill length to depth ratio by island ***")
+    bill_ratio_dict = avg_bill_by_island(penguin_data)
+    print("Bill Length-to_Depth Ratios: ")
+    for island, ratio in bill_ratio_dict.items():
+        print(f" {island}: {ratio:.3f}")
 
 if __name__ == "__main__":
     main()
