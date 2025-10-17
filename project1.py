@@ -48,6 +48,11 @@ def data_analysis(penguin_data):
     print(f"Total rows: {len(penguin_data)}")
 
 def avg_mass_by_species_sex(penguin_data):
+    '''
+    Calculates the average body mass for each species and sex combinations.
+    INPUT: penguin_data (list of dictionary)
+    OUTPUT: average_name (dictionary)
+    '''
     # Initialize empty dict to organize data by species, sex, body mass
     final_data = {}
 
@@ -90,6 +95,11 @@ def avg_mass_by_species_sex(penguin_data):
     return average
 
 def avg_bill_by_island(penguin_data):
+    '''
+    Calculates average bill length to depth ratio for penguins on each island
+    INPUT: penguin_data (list of dictionary)
+    OUTPUT: average_ratio (dictionary)
+    '''
     # Initialize empty dict to organize data by island
     island_data = {}
 
@@ -141,6 +151,12 @@ def main():
     print("Bill Length-to_Depth Ratios: ")
     for island, ratio in bill_ratio_dict.items():
         print(f" {island}: {ratio:.3f}")
+
+    result = {
+        "avg_mass_by_species_sex": mass_dict,
+        "avg_bill_ratio_by_island": bill_ratio_dict
+    }
+    return result
 
 if __name__ == "__main__":
     main()
