@@ -1,0 +1,33 @@
+Function Decomposition:
+
+main()
+Runs the programs and calls all function in logical sequence
+INPUT: None
+OUTPUT: None
+↓
+read_file(file_name)
+Reads CSV file, transforms to Python data structures, filters NA record
+INPUT: file_name (string)
+OUTPUT: penguin_data (list of dictionaries)
+Note: each dictionary contains species, island, bill_length_mm, bill_depth_mm, flipper_length_mm, body_mass_g, sex, year
+↓
+data_analysis(penguin_data)
+Provides basic overview from the penguins dataset: list of variables, sample row entry, number of rows
+INPUT: penguin_data (list of dictionary)
+OUTPUT: None (prints results)
+↓
+avg_mass_by_species_sex(penguin_data)
+Calculates the average body mass for each species and sex combinations.
+INPUT: penguin_data (list of dictionary)
+OUTPUT: average_name (dictionary)
+↓
+avg_bill_by_island(penguin_data)
+Calculates average bill length to depth ratio for penguins on each island
+INPUT: penguin_data (list of dictionary)
+OUTPUT: average_ratio (dictionary)
+↓
+present_as_csv(results, file_name)
+Write all results to a CSV output file
+INPUT: results (dictionary), file_name (string)
+OUTPUT: None (CSV file)
+
