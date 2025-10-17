@@ -1,4 +1,4 @@
-Analysis Type,Category,Sex,Value,Units
+Analysis Type,Variable,Group,Value,Units
 Average Body Mass,Adelie,male,4043.493,grams
 Average Body Mass,Adelie,female,3368.836,grams
 Average Body Mass,Gentoo,female,4679.741,grams

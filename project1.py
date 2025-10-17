@@ -35,13 +35,14 @@ def read_file(file_name):
 def data_analysis(penguin_data):
     # Check data availability
     if not penguin_data:
-        return "No data available to analyze."
+        print("No data available to analyze.")
+        return
      
-    # Display column names
+    # Display column names (all variables)
     variables = list(penguin_data[0].keys())
     print(f"Variables in penguin dataset: {variables}")
 
-    # Display sample entry
+    # Display sample entry (first row)
     print(f"Sample entry: {penguin_data[0]}")
 
     # Display total rows in cleaned penguin dataset (no NA)
@@ -53,7 +54,7 @@ def avg_mass_by_species_sex(penguin_data):
     INPUT: penguin_data (list of dictionary)
     OUTPUT: average (dictionary)
     '''
-    # Initialize empty dict to organize data by species, sex, body mass
+    # Initialize empty dict to organize data by species & sex
     final_data = {}
 
     # Process each penguin record in dataset
@@ -63,33 +64,25 @@ def avg_mass_by_species_sex(penguin_data):
         mass = row['body_mass_g']
 
         # If species not in final_data, create entry for it
-#        print(f"First final_data: {final_data}")
         if species not in final_data:
             final_data[species] = {}
         
-        # If sex not in final_data, initialize entry, counter
+        # If sex not in species entry, initialize counter
         if sex not in final_data[species]:
             final_data[species][sex] = {'total': 0, 'count': 0}
         
-        # Add penguin's mass to total for its species-sex group; increment count
+        # Add penguin's mass to total & increment count
         final_data[species][sex]['total'] += mass
         final_data[species][sex]['count'] += 1
 
-#        print(f"Print Mass: {mass}")
-    
-#    print(f"Second final_data: {final_data}")
-
     average = {}
-    # Iterate through each species in final_data; create entry for species
+
+    # Iterate through each species in final_data
     for species, sex_data in final_data.items():
-#        print(f"print species: {species}")
-#        print(f"sex_data: {sex_data}")
         average[species] = {}
 
-        # Iterate through each sex within species; calculate average
+        # Iterate through each sex within species & calculate average
         for sex, stats in sex_data.items():
-#            print(f"print sex: {sex}")
-#            print(f"print stats: {stats}")
             average[species][sex] = stats['total'] / stats['count']
         
     return average
@@ -111,24 +104,20 @@ def avg_bill_by_island(penguin_data):
 
         # Calculate bill ratio
         bill_ratio = bill_length / bill_depth
-#        print(f"First bill_ratio: {bill_ratio}")
-#        print(f"Print island_data: {island_data}")
 
-        # If island not in dict, initialize entry, counter
+        # If island not in dict, initialize counter
         if island not in island_data:
             island_data[island] = {'total_ratio': 0, 'count': 0}
 
-        # Add to penguin's ratio total and increment counter
+        # Add ratio to total and increment counter
         island_data[island]['total_ratio'] += bill_ratio
         island_data[island]['count'] += 1
     
-#    print(f"print island_data[island]['total_ratio']: {island_data[island]['total_ratio']}")
     average_ratio = {}
 
-    # Calculate average for each island
+    # Calculate average ratio for each island
     for island, stats in island_data.items():
         average_ratio[island] = stats['total_ratio'] / stats['count']
-#        print(f"print average_ratio[island]: {average_ratio[island]}")
     
     return average_ratio
 
@@ -142,7 +131,7 @@ def present_as_csv(results, filename = "project1_results.csv"):
         with open(filename, 'w', newline='') as csv_file:
             writer = csv.writer(csv_file)
             # Write header row
-            writer.writerow(['Analysis Type', 'Category', 'Sex', 'Value', 'Units'])
+            writer.writerow(['Analysis Type', 'Variable', 'Group', 'Value', 'Units'])
             
             # write average mass results
             body_mass_results = results['avg_mass_by_species_sex']
