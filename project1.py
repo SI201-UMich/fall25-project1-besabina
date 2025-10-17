@@ -51,7 +51,7 @@ def avg_mass_by_species_sex(penguin_data):
     '''
     Calculates the average body mass for each species and sex combinations.
     INPUT: penguin_data (list of dictionary)
-    OUTPUT: average_name (dictionary)
+    OUTPUT: average (dictionary)
     '''
     # Initialize empty dict to organize data by species, sex, body mass
     final_data = {}
@@ -90,7 +90,7 @@ def avg_mass_by_species_sex(penguin_data):
         for sex, stats in sex_data.items():
 #            print(f"print sex: {sex}")
 #            print(f"print stats: {stats}")
-            average[species][sex] = stats['total']/stats['count']
+            average[species][sex] = stats['total'] / stats['count']
         
     return average
 
@@ -123,7 +123,6 @@ def avg_bill_by_island(penguin_data):
         island_data[island]['count'] += 1
     
 #    print(f"print island_data[island]['total_ratio']: {island_data[island]['total_ratio']}")
-
     average_ratio = {}
 
     # Calculate average for each island
