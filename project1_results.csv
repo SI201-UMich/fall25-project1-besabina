@@ -1,0 +1,10 @@
+Analysis Type,Category,Sex,Value,Units
+Average Body Mass,Adelie,male,4043.493,grams
+Average Body Mass,Adelie,female,3368.836,grams
+Average Body Mass,Gentoo,female,4679.741,grams
+Average Body Mass,Gentoo,male,5484.836,grams
+Average Body Mass,Chinstrap,female,3527.206,grams
+Average Body Mass,Chinstrap,male,3938.971,grams
+Bill Length/Depth Ratio,Torgersen,All Penguins,2.124,ratio
+Bill Length/Depth Ratio,Biscoe,All Penguins,2.893,ratio
+Bill Length/Depth Ratio,Dream,All Penguins,2.413,ratio

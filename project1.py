@@ -131,7 +131,46 @@ def avg_bill_by_island(penguin_data):
 #        print(f"print average_ratio[island]: {average_ratio[island]}")
     
     return average_ratio
-    
+
+def present_as_csv(results, filename = "project1_results.csv"):
+    '''
+    Write analysis results to a CSV file.
+    INPUT: results (dictionary), filename (string)
+    OUTPUT: None (CSV file)
+    '''
+    try:
+        with open(filename, 'w', newline='') as csv_file:
+            writer = csv.writer(csv_file)
+            # Write header row
+            writer.writerow(['Analysis Type', 'Category', 'Sex', 'Value', 'Units'])
+            
+            # write average mass results
+            body_mass_results = results['avg_mass_by_species_sex']
+            for species, sex_data in body_mass_results.items():
+                for sex, avg_mass in sex_data.items():
+                    writer.writerow([
+                        'Average Body Mass',
+                        species,
+                        sex,
+                        round(avg_mass, 3),
+                        'grams'
+                    ])
+            
+            # write average bill ratio results
+            bill_ratio_results = results['avg_bill_by_island']
+            for island, ratio in bill_ratio_results.items():
+                writer.writerow([
+                    'Bill Length/Depth Ratio',
+                    island,
+                    'All Penguins',
+                    round(ratio, 3),
+                    'ratio'
+                ])
+        return True
+    except:
+        print(f"Error. Cannot write to file.")
+        return False
+
 
 def main():
     penguin_data = read_file('penguins.csv')
@@ -147,14 +186,21 @@ def main():
 
     print("\n*** CALCULATION 2: Average bill length to depth ratio by island ***")
     bill_ratio_dict = avg_bill_by_island(penguin_data)
-    print("Bill Length-to_Depth Ratios: ")
+    print("Bill Length-to-Depth Ratios: ")
     for island, ratio in bill_ratio_dict.items():
         print(f" {island}: {ratio:.3f}")
 
+    print("\n*** Writing result to file ***")
     result = {
         "avg_mass_by_species_sex": mass_dict,
-        "avg_bill_ratio_by_island": bill_ratio_dict
+        "avg_bill_by_island": bill_ratio_dict
     }
+    success = present_as_csv(result)
+    if success:
+        print("Program successful!")
+    else:
+        print("Program failed.")
+
     return result
 
 if __name__ == "__main__":
