@@ -4,9 +4,9 @@
 # External resources: Runestone, GenAI, OH, Google sites, Previous HW
 # - Runestone: viewed examples for write, nested dictionary, open() file, inner dictionary, test cases
 # - GenAI: used to pseudocode, debug/understand errors, initialize new entries in a nested dictionary
-# -OH: received help in function structure formation, submission clarity
+# - OH: received help in function structure formation, submission clarity
 # Google sites: learned about DictReader(), watched tutorials on nested dictionary, writing test cases
-# Prvious HW: used previous HW test cases as example to write them here and import appropriate functions   
+# Previous HW: used previous HW test cases as example to write them here and import appropriate functions   
 
 import csv 
 
@@ -84,7 +84,7 @@ def avg_mass_by_species_sex(penguin_data):
         # Add penguin's mass to total & increment count
         final_data[species][sex]['total'] += mass
         final_data[species][sex]['count'] += 1
-
+    
     average = {}
 
     # Iterate through each species in final_data
